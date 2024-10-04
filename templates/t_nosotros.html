@@ -4,7 +4,17 @@
 {% block titulo %}NOSOTROS{% endblock titulo %}
 
 
-{% block contenido %}
-	<h2>HOLA SOY NOSOTROS</h2>
+{{% block contenido %}
+<h2 class="titulo-nosotros">SOMOS EL GRUPO AMADEUS DEL INFORMATORIO, EDICIÓN 2024</h2>
+
+<p class="descripcion">
+	Estamos trabajando en nuestro proyecto final, aplicando los conocimientos adquiridos hasta ahora para crear un blog relacionado con la inteligencia artificial.
+</p>
+
+<p class="descripcion">
+	Nuestro equipo está compuesto por cinco integrantes con profesiones diversas, unidos en la tarea de mejorar la experiencia de trabajo colaborativo utilizando plataformas como <strong>GitHub</strong> y <strong>Trello</strong>. Este proyecto académico no solo nos permite aplicar lo aprendido, sino que también nos brinda la oportunidad de adquirir nuevas habilidades y conocimientos valiosos.
+</p>
+
+<img src="{% static 'img/equipo.jpg' %}" alt="Nuestro equipo" class="imagen-equipo">
 {% endblock contenido %}
 
