@@ -9,7 +9,7 @@ from .models import Noticia, Categoria, Comentario
 
 from django.urls import reverse_lazy
 
-@login_required
+
 def Listar_Noticias(request):
 	contexto = {}
 
@@ -77,7 +77,7 @@ def Eliminar_noticia(request, pk):
     return render(request, 'noticias/eliminar_noticia.html', {'noticia': noticia})
 
 
-@login_required
+
 def Detalle_Noticias(request, pk):
 	contexto = {}
 
