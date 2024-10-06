@@ -10,4 +10,4 @@ class ComentarioForm(forms.ModelForm):
 class NoticiaForm(forms.ModelForm):
     class Meta:
         model = Noticia
-        fields = ['titulo', 'cuerpo', 'imagen', 'categoria_noticia']
+        fields = ['titulo', 'cuerpo', 'imagen', 'categoria_noticia'] 

@@ -2,7 +2,7 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render, redirect
 
 from django.contrib.auth.decorators import login_required
-from .forms import ComentarioForm
+from .forms import ComentarioForm, NoticiaForm
 # from .forms import NoticiaForm
 
 from .models import Noticia, Categoria, Comentario
@@ -28,6 +28,28 @@ def Listar_Noticias(request):
 	return render(request, 'noticias/listar.html', contexto)
 
 @login_required
+def Crear_noticia(request):
+    if request.method == 'POST':
+        titulo = request.POST['titulo']
+        cuerpo = request.POST['cuerpo']
+        imagen = request.FILES['imagen']
+        categoria_noticia_id = request.POST['categoria_noticia']
+        categoria_noticia = Categoria.objects.get(pk=categoria_noticia_id)
+        
+        noticia = Noticia(
+            titulo=titulo,
+            cuerpo=cuerpo,
+            imagen=imagen,
+            categoria_noticia=categoria_noticia
+        )
+        noticia.save()
+        return redirect('noticias:listar')  # Redirige a la lista de noticias
+
+    categorias = Categoria.objects.all()
+    noticias = Noticia.objects.all()
+    return render(request, 'noticias/listar.html', {'categorias': categorias, 'noticias': noticias})
+
+@login_required
 def Detalle_Noticias(request, pk):
 	contexto = {}
 
@@ -42,7 +64,7 @@ def Detalle_Noticias(request, pk):
 
 @login_required
 def Comentar_Noticia(request):
-
+	
 	com = request.POST.get('comentario',None)
 	usu = request.user
 	noti = request.POST.get('id_noticia', None)# OBTENGO LA PK

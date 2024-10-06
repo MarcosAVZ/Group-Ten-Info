@@ -7,6 +7,8 @@ app_name = 'noticias'
 urlpatterns = [
 	
 	path('', views.Listar_Noticias, name = 'listar'),
+    
+	path('crear/', views.Crear_noticia, name='crear'),
 
 	path('Detalle/<int:pk>', views.Detalle_Noticias, name = 'detalle'),
 	
