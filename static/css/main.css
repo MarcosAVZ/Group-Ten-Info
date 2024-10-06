@@ -239,3 +239,155 @@ input[type="password"] {
     color: red; 
     margin-top: 5px; 
 }
+
+
+/* Estilo para el contenedor de la noticia */
+.noticia-detalle {
+	font-family: Arial, sans-serif; 
+	line-height: 1.6; 
+    max-width: 800px; /* Ancho máximo de la sección de la noticia */
+    margin: auto; /* Centrar la sección */
+    padding: 20px; /* Espaciado interno */
+    background-color: #f9f9f9; /* Color de fondo claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+.noticia-detalle h2 {
+    font-size: 1.8em; /* Tamaño del título principal */
+    margin-bottom: 15px; /* Espacio debajo del título */
+    color: #333; /* Color del texto */
+}
+
+.noticia-detalle h3 {
+    font-size: 1.4em; /* Tamaño de los subtítulos */
+    margin-top: 20px; /* Espacio arriba del subtítulo */
+    margin-bottom: 10px; /* Espacio debajo del subtítulo */
+    color: #007bff; /* Color del texto para los subtítulos */
+}
+
+ .noticia-detalle  img.imagen-detalle{
+    max-width: 100%; /* Imagen se adapta al ancho del contenedor */
+    height: auto;
+	border-radius: 8px;
+}
+.titulo-noticia {
+    font-size: 2rem; /* Tamaño grande para el título */
+    color: #333; /* Color oscuro para el título */
+    margin: 10px 0; /* Espaciado vertical */
+}
+
+.fecha, .categoria {
+    font-size: 1rem; /* Tamaño de fuente más pequeño para fecha y categoría */
+    color: #666; /* Color gris para diferenciar */
+}
+
+.cuerpo-noticia {
+    font-size: 1.1rem; /* Tamaño de fuente para el cuerpo del texto */
+    line-height: 1.6; /* Mayor espacio entre líneas para mejorar la lectura */
+    color: #444; /* Color del texto */
+}
+
+.separador {
+    border: 1px solid #ccc; /* Separador sutil */
+    margin: 20px 0; /* Espaciado vertical */
+}
+
+
+.comentario-form {
+    margin-top: 20px; /* Espacio superior para el formulario de comentarios */
+}
+
+textarea {
+    width: 100%; /* Ancho completo para el área de texto */
+    height: 100px; /* Altura del área de texto */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; /* Bordes sutiles */
+}
+
+.btn-enviar {
+    background-color: #28a745; /* Color verde para el botón de enviar */
+    color: white; /* Color del texto en el botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.ver-comentarios-btn, .btn-volver {
+    background-color: #007BFF; /* Color azul para el botón de ver comentarios */
+    color: white; /* Color del texto en el botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin-bottom: 20px; 
+	text-decoration: none;
+}
+
+.comentarios-lista {
+    margin-top: 20px; /* Espacio superior para la lista de comentarios */
+}
+
+/* Mostrar los comentarios al hacer clic en el botón */
+.ver-comentarios-btn:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+
+
+.btn-volver:hover {
+    background-color:  #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+
+
+.crear-noticia {
+    background-color: #f9f9f9; /* Color de fondo claro */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    margin: 20px 0; /* Margen superior e inferior */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.crear-noticia h2 {
+    margin-bottom: 15px; /* Espacio inferior del encabezado */
+    color: #333; /* Color del texto */
+}
+
+.crear-noticia label {
+    display: block; /* Para que los labels ocupen toda la línea */
+    margin-bottom: 5px; /* Espacio inferior de los labels */
+    font-weight: bold; /* Negrita para los labels */
+}
+
+.crear-noticia input[type="text"],
+.crear-noticia textarea,
+.crear-noticia select {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Margen inferior */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+.crear-noticia input[type="file"] {
+    margin-bottom: 15px; /* Margen inferior */
+}
+
+.crear-noticia button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color de texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.crear-noticia button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}
