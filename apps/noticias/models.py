@@ -15,6 +15,7 @@ class Noticia(models.Model):
 	imagen = models.ImageField(upload_to = 'noticias')
 	categoria_noticia = models.ForeignKey(Categoria, on_delete = models.CASCADE)
 	fecha = models.DateTimeField(auto_now_add=True)
+	autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
 
 	def __str__(self):
 		return self.titulo

@@ -27,12 +27,14 @@ def Listar_Noticias(request):
 
 	return render(request, 'noticias/listar.html', contexto)
 
+
 @login_required
 def Crear_noticia(request):
     if request.method == 'POST':
         titulo = request.POST['titulo']
         cuerpo = request.POST['cuerpo']
         imagen = request.FILES['imagen']
+        autor = request.user
         categoria_noticia_id = request.POST['categoria_noticia']
         categoria_noticia = Categoria.objects.get(pk=categoria_noticia_id)
         
@@ -40,6 +42,7 @@ def Crear_noticia(request):
             titulo=titulo,
             cuerpo=cuerpo,
             imagen=imagen,
+            autor=autor,
             categoria_noticia=categoria_noticia
         )
         noticia.save()
@@ -48,6 +51,31 @@ def Crear_noticia(request):
     categorias = Categoria.objects.all()
     noticias = Noticia.objects.all()
     return render(request, 'noticias/listar.html', {'categorias': categorias, 'noticias': noticias})
+
+@login_required
+def Editar_noticia(request, pk):
+    noticia = get_object_or_404(Noticia, pk=pk)
+    categorias = Categoria.objects.all() 
+    
+    if request.method == 'POST':
+        noticia.titulo = request.POST['titulo']
+        noticia.cuerpo = request.POST['cuerpo']
+        if 'imagen' in request.FILES:
+            noticia.imagen = request.FILES['imagen']
+        noticia.categoria_noticia_id = request.POST['categoria_noticia']
+        noticia.save()
+        return redirect('noticias:detalle', pk=noticia.pk)
+
+    return render(request, 'noticias/editar_noticia.html',  {'noticia': noticia, 'categorias': categorias})
+
+@login_required
+def Eliminar_noticia(request, pk):
+    noticia = get_object_or_404(Noticia, pk=pk)
+    if request.method == 'POST':
+        noticia.delete()
+        return redirect('noticias:listar')
+    return render(request, 'noticias/eliminar_noticia.html', {'noticia': noticia})
+
 
 @login_required
 def Detalle_Noticias(request, pk):

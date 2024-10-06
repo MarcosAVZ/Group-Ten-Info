@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Editar Noticia{% endblock titulo %}
+
+{% block contenido %}
+<div class="editar-noticia">
+    <h2>Editar Noticia</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" id="titulo" value="{{noticia.titulo}}" required>
+        </div>
+        <div>
+            <label for="cuerpo">Cuerpo:</label>
+            <textarea name="cuerpo" id="cuerpo" required>{{noticia.cuerpo}}</textarea>
+        </div>
+        <div>
+            <label for="imagen">Imagen:</label>
+            <input type="file" name="imagen" id="imagen" accept="image/*">
+        </div>
+        <div>
+            <label for="categoria_noticia">Categoría:</label>
+            <select name="categoria_noticia" id="categoria_noticia" required>
+                {% for cat in categorias %}
+                    <option value="{{ cat.pk }}" {% if cat.pk == noticia.categoria_noticia.pk %}selected{% endif %}>{{ cat.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn-enviar">Actualizar Noticia</button>
+    </form>
+</div>
+{% endblock contenido %}

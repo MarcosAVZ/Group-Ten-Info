@@ -15,6 +15,20 @@
 
     <hr class="separador">
 
+
+    <!-- Botón de editar -->
+    {% if user.is_authenticated and user.is_superuser or user == noticia.autor %}
+    <a href="{% url 'noticias:editar_noticia' noticia.pk %}" class="btn-enviar">Editar Noticia</a>
+    {% endif %}
+
+    <!-- Botón de eliminar -->
+    {% if user.is_authenticated and user.is_superuser or user == noticia.autor %}
+    <form method="POST" action="{% url 'noticias:eliminar_noticia' noticia.pk %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn-enviar" onclick="return confirm('¿Estás seguro de que quieres eliminar esta noticia?');">Eliminar Noticia</button>
+    </form>
+    {% endif %}
+
     <!-- formulario  comentarios solo para usuarios registrados -->
     {% if user.is_authenticated %}
     <div class="comentario-form">
