@@ -26,3 +26,14 @@ class Comentario(models.Model):
 
 	def __str__(self):
 		return f"{noticia}->{texto}"
+	
+	DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nombre_de_tu_base_de_datos',
+        'USER': 'tu_usuario',
+        'PASSWORD': 'tu_contraseña',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
