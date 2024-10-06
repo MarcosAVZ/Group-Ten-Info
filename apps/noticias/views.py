@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
+from django.http import HttpResponseForbidden
+from django.shortcuts import get_object_or_404, render, redirect
 
 from django.contrib.auth.decorators import login_required
+from .forms import ComentarioForm
+# from .forms import NoticiaForm
 
 from .models import Noticia, Categoria, Comentario
 
@@ -47,6 +50,37 @@ def Comentar_Noticia(request):
 	coment = Comentario.objects.create(usuario = usu, noticia = noticia, texto = com)
 
 	return redirect(reverse_lazy('noticias:detalle', kwargs={'pk': noti}))
+
+
+@login_required
+def Eliminar_Comentario(request, pk):
+    comentario = get_object_or_404(Comentario, pk=pk)
+    
+    if request.user == comentario.usuario or request.user.is_superuser:  # Permitir al admin eliminar
+        comentario.delete()
+        return redirect(reverse_lazy('noticias:detalle', kwargs={'pk': comentario.noticia.pk}))
+    
+    return HttpResponseForbidden("No puedes eliminar este comentario.")
+
+
+@login_required
+def Editar_comentario(request, pk):
+    comentario = get_object_or_404(Comentario, id=pk)
+    noticia_id = comentario.noticia.id  # Obtener el ID de la noticia
+
+    # Verificar si el usuario que intenta editar el comentario es el autor
+    if request.user != comentario.usuario and not request.user.is_superuser:
+        return redirect('/Noticias/detalle.html')  # Cambia esto a la vista adecuada
+
+    if request.method == 'POST':
+        nuevo_texto = request.POST.get('comentario')  # Obtener el nuevo texto
+        if nuevo_texto:  # Asegurarse de que no esté vacío
+            comentario.texto = nuevo_texto  # Asignar el nuevo texto
+            comentario.save()  # Guardar los cambios
+        return redirect(f'/Noticias/Detalle/{noticia_id}')  # Redirigir a la vista de detalle de la noticia
+    else:
+        return redirect(f'/Noticias/Detalle/{noticia_id}') 
+    
 
 #{'nombre':'name', 'apellido':'last name', 'edad':23}
 #EN EL TEMPLATE SE RECIBE UNA VARIABLE SEPARADA POR CADA CLAVE VALOR
