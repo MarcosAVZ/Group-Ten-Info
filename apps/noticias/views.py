@@ -3,30 +3,43 @@ from django.shortcuts import get_object_or_404, render, redirect
 
 from django.contrib.auth.decorators import login_required
 from .forms import ComentarioForm, NoticiaForm
-# from .forms import NoticiaForm
+from django.db.models import Q
 
 from .models import Noticia, Categoria, Comentario
 
 from django.urls import reverse_lazy
 
 
+
+
 def Listar_Noticias(request):
-	contexto = {}
+    contexto = {}
 
-	id_categoria = request.GET.get('id',None)
+    # Obtener parámetros de filtro
+    id_categoria = request.GET.get('categoria', None)
+    ordenar = request.GET.get('ordenar', None)
 
-	if id_categoria:
-		n = Noticia.objects.filter(categoria_noticia = id_categoria)
-	else:
-		n = Noticia.objects.all() #RETORNA UNA LISTA DE OBJETOS
+    # Filtrar por categoría si se proporciona
+    if id_categoria:
+        noticias = Noticia.objects.filter(categoria_noticia=id_categoria)
+    else:
+        noticias = Noticia.objects.all()  # Obtener todas las noticias si no se filtra por categoría
 
-	contexto['noticias'] = n
+    # Ordenar por antigüedad o título si se proporciona el parámetro
+    if ordenar == 'antiguedad_asc':
+        noticias = noticias.order_by('fecha')  # Orden ascendente por fecha (antiguo a reciente)
+    elif ordenar == 'antiguedad_desc':
+        noticias = noticias.order_by('-fecha')  # Orden descendente por fecha (reciente a antiguo)
+    elif ordenar == 'titulo_asc':
+        noticias = noticias.order_by('titulo')  # Orden ascendente por título (alfabético)
+    elif ordenar == 'titulo_desc':
+        noticias = noticias.order_by('-titulo')  # Orden descendente por título (alfabético inverso)
 
-	cat = Categoria.objects.all().order_by('nombre')
-	contexto['categorias'] = cat
+    # Añadir las noticias y categorías al contexto
+    contexto['noticias'] = noticias
+    contexto['categorias'] = Categoria.objects.all().order_by('nombre')
 
-	return render(request, 'noticias/listar.html', contexto)
-
+    return render(request, 'noticias/listar.html', contexto)
 
 @login_required
 def Crear_noticia(request):

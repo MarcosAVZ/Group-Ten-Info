@@ -13,6 +13,20 @@
 		{% endfor %}
 
 	</div>
+	<!-- Filtros adicionales: antigüedad y título -->
+	<form method="GET" action="{% url 'noticias:listar' %}">
+		<div>
+			<label for="ordenar">Ordenar por:</label>
+			<select name="ordenar" id="ordenar">
+				<option value="">Seleccionar</option>
+				<option value="antiguedad_asc">Antigüedad Ascendente</option>
+				<option value="antiguedad_desc">Antigüedad Descendente</option>
+				<option value="titulo_asc">Título  (A-Z)</option>
+				<option value="titulo_desc">Título (Z-A)</option>
+			</select>
+			<button type="submit">Aplicar Filtros</button>
+		</div>
+	</form>
 
 	<!-- Formulario para crear una noticia -->
 {% if user.is_authenticated %}
