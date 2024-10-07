@@ -9,7 +9,7 @@
 
 		<a href="{% url 'noticias:listar' %}">TODAS</a>
 		{% for cat in categorias %}
-			<a href="?id={{cat.pk}}">{{cat.nombre}}</a>
+			<a href="?categoria={{cat.pk}}">{{cat.nombre}}</a>
 		{% endfor %}
 
 	</div>
