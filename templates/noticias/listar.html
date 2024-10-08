@@ -8,11 +8,27 @@
 	<div class="submenu">
 
 		<a href="{% url 'noticias:listar' %}">TODAS</a>
+		{% if user.is_authenticated %}
+        	<a href="?mis_noticias=true">Mis Noticias</a> 
+    	{% endif %} 
 		{% for cat in categorias %}
 			<a href="?categoria={{cat.pk}}">{{cat.nombre}}</a>
 		{% endfor %}
 
 	</div>
+	<!-- Filtro adicional por autor -->
+	<form method="GET" action="{% url 'noticias:listar' %}">
+		<div>
+			<label for="autor">Filtrar por autor:</label>
+			<select name="autor" id="autor">
+				<option value="">Todos los autores</option>
+				{% for autor in autores %}
+					<option value="{{ autor.pk }}">{{ autor.username }}</option>
+				{% endfor %}
+			</select>
+			<button type="submit">Filtrar</button>
+		</div>
+	</form>
 	<!-- Filtros adicionales: antigüedad y título -->
 	<form method="GET" action="{% url 'noticias:listar' %}">
 		<div>
@@ -29,37 +45,37 @@
 	</form>
 
 	<!-- Formulario para crear una noticia -->
-{% if user.is_authenticated %}
-<div class="crear-noticia">
-    <h2>Crear Noticia</h2>
-    <form method="POST" enctype="multipart/form-data" action="{% url 'noticias:crear' %}">
-        {% csrf_token %}
-        <div>
-            <label for="titulo">Título:</label>
-            <input type="text" name="titulo" id="titulo" required>
-        </div>
-        <div>
-            <label for="cuerpo">Cuerpo:</label>
-            <textarea name="cuerpo" id="cuerpo" required></textarea>
-        </div>
-        <div>
-            <label for="imagen">Imagen:</label>
-            <input type="file" name="imagen" id="imagen" accept="image/*" required>
-        </div>
-        <div>
-            <label for="categoria_noticia">Categoría:</label>
-            <select name="categoria_noticia" id="categoria_noticia" required>
-                {% for cat in categorias %}
-                    <option value="{{ cat.pk }}">{{ cat.nombre }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <button type="submit" class="btn-enviar">Publicar</button>
-    </form>
-</div>
-{% else %}
-    <p>Debes estar registrado para crear una noticia.</p>
-{% endif %}
+	{% if user.is_authenticated %}
+	<div class="crear-noticia">
+		<h2>Crear Noticia</h2>
+		<form method="POST" enctype="multipart/form-data" action="{% url 'noticias:crear' %}">
+			{% csrf_token %}
+			<div>
+				<label for="titulo">Título:</label>
+				<input type="text" name="titulo" id="titulo" required>
+			</div>
+			<div>
+				<label for="cuerpo">Cuerpo:</label>
+				<textarea name="cuerpo" id="cuerpo" required></textarea>
+			</div>
+			<div>
+				<label for="imagen">Imagen:</label>
+				<input type="file" name="imagen" id="imagen" accept="image/*" required>
+			</div>
+			<div>
+				<label for="categoria_noticia">Categoría:</label>
+				<select name="categoria_noticia" id="categoria_noticia" required>
+					{% for cat in categorias %}
+						<option value="{{ cat.pk }}">{{ cat.nombre }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<button type="submit" class="btn-enviar">Publicar</button>
+		</form>
+	</div>
+	{% else %}
+		<p>Debes estar registrado para crear una noticia.</p>
+	{% endif %}
 
 
 	<div class="noticias-container">

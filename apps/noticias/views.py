@@ -8,6 +8,7 @@ from django.db.models import Q
 from .models import Noticia, Categoria, Comentario
 
 from django.urls import reverse_lazy
+from apps.usuarios.models import Usuario
 
 
 
@@ -18,12 +19,19 @@ def Listar_Noticias(request):
     # Obtener parámetros de filtro
     id_categoria = request.GET.get('categoria', None)
     ordenar = request.GET.get('ordenar', None)
+    mis_noticias = request.GET.get('mis_noticias', 'false')
+    id_autor = request.GET.get('autor', None) 
 
-    # Filtrar por categoría si se proporciona
+    # Filtrar por categoría 
     if id_categoria:
         noticias = Noticia.objects.filter(categoria_noticia=id_categoria)
     else:
-        noticias = Noticia.objects.all()  # Obtener todas las noticias si no se filtra por categoría
+        noticias = Noticia.objects.all() 
+
+    if mis_noticias == 'true' and request.user.is_authenticated:
+        noticias = noticias.filter(autor=request.user)
+    elif id_autor:
+        noticias = noticias.filter(autor_id=id_autor)
 
     # Ordenar por antigüedad o título si se proporciona el parámetro
     if ordenar == 'antiguedad_asc':
@@ -38,6 +46,7 @@ def Listar_Noticias(request):
     # Añadir las noticias y categorías al contexto
     contexto['noticias'] = noticias
     contexto['categorias'] = Categoria.objects.all().order_by('nombre')
+    contexto['autores'] = Usuario.objects.all()
 
     return render(request, 'noticias/listar.html', contexto)
 
