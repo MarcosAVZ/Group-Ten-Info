@@ -21,6 +21,7 @@ from django.contrib.auth import views as auth
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
 
@@ -39,5 +40,10 @@ urlpatterns = [
     # URL DE APLICACION
     path('Noticias/', include('apps.noticias.urls')),
     path('Usuario/',include('apps.usuarios.urls')),
+    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Ruta para el cierre de sesión
+    
+    
+
 
