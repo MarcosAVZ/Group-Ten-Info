@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/usuarios/perfil.css' %}">
+    {% endblock %}
+    <title>{% block titulo %} Perfil de Usuario {% endblock titulo %}</title>
+</head>
+<body>
+    {% block contenido %}
+
+    <div class="perfil-info">
+        <img src="{{ user.foto_perfil.url }}" alt="Foto de perfil">
+        <h2>Perfil de {{ user.username }}</h2>
+    </div>
+    <div class="cuerpo-medio">
+        <article class="noticias-container">
+            {% for noti in noticias %}
+                <div class="noticia-previa">
+                    <img src="{{ noti.imagen.url }}" class="imagen-noticia" alt="{{ noti.titulo }}">
+                    <h3><a href="{% url 'noticias:detalle' noti.pk %}">{{ noti.titulo }}</a></h3>
+                    <p>Fecha: {{ noti.fecha|date:"d M Y" }}</p>
+                    <p>Categoría: {{ noti.categoria_noticia }}</p>
+                    <p class="descripcion">{{ noti.cuerpo|truncatewords:20 }}</p>
+                    <p>PK: {{ noti.pk }}</p>
+                </div> 
+            {% empty %}
+                <li>No has publicado ninguna noticia aún.</li>
+            {% endfor %}
+        </article>
+        <!--Codigo sobre las noticcias recomendadas-->
+        <aside>
+            <h3>Noticias Recomendadas</h3>
+            <ul>
+                {% for random_noti in noticias_aleatorias %}
+                    <li class="noticia-item">
+                        <img src="{{ random_noti.imagen.url }}" alt="{{ random_noti.titulo }}">
+                        <a href="{% url 'noticias:detalle' random_noti.pk %}">
+                            <h4>{{ random_noti.titulo }}</h4>
+                        </a>
+                        <p class="fecha">{{ random_noti.fecha|date:"d M Y" }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </div>
+    {% endblock contenido %}
+</body>
+</html>

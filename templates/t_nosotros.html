@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block titulo %}NOSOTROS{% endblock titulo %}
-
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nosotros.css' %}">
+    {% endblock %}
+	<title>{% block titulo %}NOSOTROS{% endblock titulo %}</title>
+</head>
+<body>
 {% block contenido %}
 <h2 class="titulo-nosotros">SOMOS EL GRUPO AMADEUS DEL INFORMATORIO, EDICIÓN 2024</h2>
 
@@ -17,4 +24,7 @@
 
 <img src="{% static 'img/equipo.jpg' %}" alt="Nuestro equipo" class="imagen-equipo">
 {% endblock contenido %}
+</body>
+</html>
+
 
