@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block titulo %}HOME{% endblock titulo %}
-
-
-{% block contenido %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    {% endblock %}
+	<title>{%block titulo %}HOME{% endblock titulo %}</title>
+</head>
+<body>
+	{% block contenido %}
 	<h2>Bienvenidos a Amadeus</h2>
 	<h3>Un blog de IA destinado a aquellas personas interesados en actualizarse y aportar contenido valioso</h3>
-{% endblock contenido %}
+	{% endblock contenido %}
+</body>
+</html>
+
+
+
+
+
+
 

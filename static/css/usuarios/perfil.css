@@ -1,0 +1,116 @@
+.perfil-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.perfil-info img{
+    width:150px; 
+    height:150px;
+    border-radius: 200px;
+    padding: 30px;
+}
+
+.noticia-previa {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.cuerpo-medio {
+    display: flex; /* Activamos Flexbox para el contenedor */
+    justify-content: space-between; /* Espaciado entre article y aside */
+    gap: 20px; /* Espacio entre article y aside */
+}
+
+.noticias-container {
+    flex: 1 1 80%; /* Article ocupa el 80% del ancho */
+    background-color: #f9f9f9; /* Opcional: para ver los bordes */
+    padding: 15px; /* Opcional: margen interno */
+}
+
+/* Estilos del aside */
+aside {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    width: 250px; /* Ajusta este valor según el diseño deseado */
+    margin: 0 auto;
+}
+
+aside h3 {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Estilo para las noticias aleatorias */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.noticia-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.noticia-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: solid 1px;
+    background-color: #ddd; /* Color de fondo para las imágenes */
+}
+
+.noticia-info {
+    flex-grow: 1;
+}
+
+.noticia-info h4 {
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.noticia-info .fecha {
+    font-size: 12px;
+    color: #888;
+}
+
+.noticia-item{
+    position: relative;
+    display: flex;
+}
+
+.noticia-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.noticia-item a:hover {
+    text-decoration: underline;
+}
+
+.fecha {
+    position: absolute;
+    bottom: 0%; /* A 10px del borde inferior */
+    right: 0%; /* A 10px del borde izquierdo */
+    font-size: 12px;
+    color: #888;
+}
