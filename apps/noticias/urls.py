@@ -22,4 +22,9 @@ urlpatterns = [
     
 	path('comentario/eliminar/<int:pk>/', views.Eliminar_Comentario, name='eliminar_comentario'),
 
+	path('denunciar/', views.denunciar_noticia, name='denunciar_noticia'),
+
+	path('denuncia_exitosa/', views.denuncia_exitosa, name='denuncia_exitosa'),
+
 ]
+
