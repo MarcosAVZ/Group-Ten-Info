@@ -24,3 +24,4 @@ urlpatterns = [
 
 	path('denunciar/', views.Denunciar_Noticia, name='denunciar_noticia'),
 ]
+

@@ -149,6 +149,30 @@ def Editar_comentario(request, pk):
         return redirect(f'/Noticias/Detalle/{noticia_id}')  # Redirigir a la vista de detalle de la noticia
     else:
         return redirect(f'/Noticias/Detalle/{noticia_id}') 
+
+@login_required
+def denunciar_noticia(request):
+    if request.method == 'POST':
+        form = DenunciaForm(request.POST)
+        if form.is_valid():
+            # Procesar los datos de la denuncia
+            titulo = form.cleaned_data['titulo']
+            url_noticia = form.cleaned_data['url_noticia']
+            descripcion = form.cleaned_data['descripcion']
+            tipo_denuncia = form.cleaned_data['tipo_denuncia']
+            # Aquí podrías guardar los datos en la base de datos o enviar un correo
+            # por ejemplo: Denuncia.objects.create(...)
+            
+            # Redirigir al usuario a una página de éxito
+            return redirect('denuncia_exitosa')
+    else:
+        form = DenunciaForm()
+    
+    return render(request, 'denunciar_noticia.html', {'form': form})
+
+def denuncia_exitosa(request):
+    return render(request, 'denuncia_exitosa.html')
+
     
 @login_required
 def Denunciar_Noticia(request):
