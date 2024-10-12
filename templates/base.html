@@ -5,9 +5,10 @@
 	<title>MI WEB| {% block titulo %}{% endblock titulo %}</title>
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<!-- Bloque para Agregar el css de los otros html dentro-->
+	{% block extra_css %}
+    {% endblock %}
 </head>
-
-
 <body class="contenedor">
 
 	<nav class="centrar navbar">
@@ -17,7 +18,7 @@
 		<a href="{% url 'noticias:listar' %}">NOTICIAS</a>
 
 		{% if user.is_authenticated %}
-			<strong>HOLA {{ user.username }}</strong>
+			<a href="{% url 'usuarios:perfil_usuario' %}">HOLA {{ user.username }}</a>
 			<a href="{% url 'logout' %}">LOGOUT</a>
 		{% else %}
 			<a href="{% url 'login' %}">LOGIN</a>
@@ -33,5 +34,30 @@
 	
 	{% endblock contenido %}
 	</div>
+	<footer>
+		<div class="footer-container">
+			<div class="footer-izquierda">
+				<p>© 2024 Amadeus. Todos los derechos reservados.</p>
+			</div>
+	
+			<div class="footer-center">
+				<img src="{% static 'img/logo.png' %}" alt="Logo" class="footer-logo">
+			</div>
+	
+			<div class="footer-derecha">
+				<p>Síguenos en nuestras redes sociales</p>
+				<div class="iconos">
+					<a href="https://facebook.com">
+						<img src="{% static 'img/facebook.png' %}" alt="Facebook" class="facebook">
+					</a>
+					<a href="https://instagram.com">
+						<img src="{% static 'img/instagram.png' %}" alt="Instagram">
+					</a>
+					<img src="{% static 'img/mail.png' %}" alt="Email">
+				</div>
+				<p>AmadeusComunicaciones@Amadeus.com.ar</p>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

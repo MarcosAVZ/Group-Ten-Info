@@ -8,6 +8,7 @@ urlpatterns = [
     
     path('registro/', views.Registro.as_view(), name = 'registro'),
 
-   
+    path('perfil/', views.perfil_usuario, name='perfil_usuario'),
+
 
 ]

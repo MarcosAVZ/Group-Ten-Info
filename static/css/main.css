@@ -1,7 +1,16 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+body {
+    margin: 0;
+}
 
-.contenedor{
-	background-color:#FFFFFF;
-	color: #34495E;
+.contenedor {
+    flex: 1;
+    min-height: 100%;
+    background-color: #FFFFFF;
+    color: #34495E;
 }
 
 .centrar{
@@ -391,3 +400,85 @@ textarea {
 .crear-noticia button:hover {
     background-color: #0056b3; /* Color más oscuro al pasar el ratón */
 }
+
+
+footer {
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto en blanco */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.footer-izquierda {
+    flex: 1;
+    text-align: left;
+    font-size: 14px;
+}
+
+.footer-center {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-center .footer-logo {
+    width: 80px; /* Ajusta el tamaño del logo */
+    height: auto;
+}
+
+.footer-derecha {
+    flex: 1;
+    text-align: right;
+    font-size: 14px;
+}
+
+.footer-derecha .iconos {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.footer-derecha .iconos a img,
+.footer-derecha .iconos img {
+    width: 30px; 
+    height: 30px;
+    padding: 5px;
+}
+
+.footer-derecha .iconos .facebook {
+    width: 50px; 
+    height: 30px;
+}
+
+.footer-derecha p {
+    margin-top: 10px; /* Espacio entre los íconos y el texto del email */
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-izquierda, .footer-center, .footer-derecha {
+        flex: none;
+        margin-bottom: 15px;
+    }
+
+    .footer-derecha .iconos {
+        justify-content: center;
+    }
+}
+
