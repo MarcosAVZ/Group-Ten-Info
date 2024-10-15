@@ -14,7 +14,7 @@ urlpatterns = [
     
 	path('eliminar/<int:pk>/', views.Eliminar_noticia, name='eliminar_noticia'),  
 
-	path('Detalle/<int:pk>', views.Detalle_Noticias, name = 'detalle'),
+	path('Detalle/<int:pk>/', views.Detalle_Noticias, name = 'detalle'),
 	
 	path('Comentario/', views.Comentar_Noticia, name = 'comentar'),
 	
@@ -22,4 +22,8 @@ urlpatterns = [
     
 	path('comentario/eliminar/<int:pk>/', views.Eliminar_Comentario, name='eliminar_comentario'),
 
+	path('denunciar/', views.Denunciar_Noticia, name='denunciar_noticia'),
+    
+    path('denuncia_exitosa/', views.denuncia_exitosa, name='denuncia_exitosa'),
 ]
+

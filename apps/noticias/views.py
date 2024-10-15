@@ -2,15 +2,13 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render, redirect
 
 from django.contrib.auth.decorators import login_required
-from .forms import ComentarioForm, NoticiaForm
+from .forms import ComentarioForm, NoticiaForm, DenunciaForm
 from django.db.models import Q
 
-from .models import Noticia, Categoria, Comentario
+from .models import Noticia, Categoria, Comentario, Denuncia
 
 from django.urls import reverse_lazy
 from apps.usuarios.models import Usuario
-
-
 
 
 def Listar_Noticias(request):
@@ -123,7 +121,6 @@ def Comentar_Noticia(request):
 
 	return redirect(reverse_lazy('noticias:detalle', kwargs={'pk': noti}))
 
-
 @login_required
 def Eliminar_Comentario(request, pk):
     comentario = get_object_or_404(Comentario, pk=pk)
@@ -152,7 +149,43 @@ def Editar_comentario(request, pk):
         return redirect(f'/Noticias/Detalle/{noticia_id}')  # Redirigir a la vista de detalle de la noticia
     else:
         return redirect(f'/Noticias/Detalle/{noticia_id}') 
+
+@login_required
+def denunciar_noticia(request):
+    if request.method == 'POST':
+        form = DenunciaForm(request.POST)
+        if form.is_valid():
+            # Procesar los datos de la denuncia
+            titulo = form.cleaned_data['titulo']
+            url_noticia = form.cleaned_data['url_noticia']
+            descripcion = form.cleaned_data['descripcion']
+            tipo_denuncia = form.cleaned_data['tipo_denuncia']
+            # Aquí podrías guardar los datos en la base de datos o enviar un correo
+            # por ejemplo: Denuncia.objects.create(...)
+            
+            # Redirigir al usuario a una página de éxito
+            return redirect('denuncia_exitosa')
+    else:
+        form = DenunciaForm()
     
+    return render(request, 'denunciar_noticia.html', {'form': form})
+
+def denuncia_exitosa(request):
+    return render(request, 'denuncia_exitosa.html')
+
+    
+@login_required
+def Denunciar_Noticia(request):
+    print(request)
+    com = request.POST.get('motivo', None)
+    usu = request.user
+    noti = request.POST.get('id_noticia',None)# OBTENGO LA PK
+    print(f'noticiaaaasss {noti}')
+    noticia = Noticia.objects.get(pk = noti) #BUSCO LA NOTICIA CON ESA PK
+    Denuncia.objects.create(usuario = usu, noticia = noticia, motivo = com)
+  
+    return redirect('noticias:detalle', pk=noticia.pk)
+
 
 #{'nombre':'name', 'apellido':'last name', 'edad':23}
 #EN EL TEMPLATE SE RECIBE UNA VARIABLE SEPARADA POR CADA CLAVE VALOR
