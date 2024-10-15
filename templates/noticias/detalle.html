@@ -31,7 +31,7 @@
 
     <!-- Botón de denunciar -->
     {% if user.is_authenticated %}
-    <form method="POST" action="{% url 'noticias:denunciar_noticia' %}">
+    <form method="POST" action="{% url 'noticias:denunciar_noticia' noticia.id %}">
         {% csrf_token %}
         <input type="hidden" name="id_noticia" value="{{ noticia.pk }}">
         <textarea name="motivo" maxlength="1500" placeholder="Escribe tu denuncia aquí..." required></textarea>
@@ -53,19 +53,7 @@
         <p>Debes estar registrado para dejar un comentario.</p>
     {% endif %}
 
-    <!-- {% if user.is_authenticated %}
-    <div class="denuncia-form">
-        <h3>Deja una denuncia</h3>
-        <form method="POST" action="{% url 'noticias:denunciar_noticia' %}">{% csrf_token %}
-            <textarea name="motivo" maxlength="1500" placeholder="Escribe tu denuncia aquí..." required></textarea>
-            <input type="hidden" name="id_noticia" value="{{noticia.pk}}"> 
-            <button type="submit" class="btn-enviar">Enviar denuncia</button>
-        </form>
-    </div>
-    {% else %}
-        <p>Debes estar registrado para dejar una denuncia.</p>
-    {% endif %}
-    <hr> -->
+   
 
     <!-- sección de comentarios -->
 	<h3>Comentarios:</h3>
