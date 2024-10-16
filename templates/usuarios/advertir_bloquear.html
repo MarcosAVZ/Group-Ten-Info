@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Acciones para el Usuario: {{ usuario.username }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div>
+            <h4>Advertir al usuario:</h4>
+            <textarea name="motivo_advertencia" placeholder="Escribe la razón de la advertencia..." required></textarea>
+            <button type="submit" name="advertir">Enviar Advertencia</button>
+        </div>
+        
+        <div>
+            <h4>Bloquear al usuario:</h4>
+            <p>Al bloquear, el usuario no podrá acceder a su cuenta. ¿Está seguro?</p>
+            <button type="submit" name="bloquear">Bloquear Usuario</button>
+        </div>
+    </form>
+
+    <!-- Bloque para mostrar mensajes -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

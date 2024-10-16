@@ -15,7 +15,28 @@
     <div class="perfil-info">
         <img src="{{ user.foto_perfil.url }}" alt="Foto de perfil">
         <h2>Perfil de {{ user.username }}</h2>
+        {% if user.is_authenticated %}
+            {% if user.bloqueado %}
+                <div class="alert alert-danger">
+                    <strong>Atención:</strong> Su usuario ha sido bloqueado. Comuníquese con el admin.
+                </div>
+            {% else %}
+                <p>Bienvenido, {{ user.username }}!</p>
+        {% endif %}
+        
+        <!-- Mostrar advertencia aquí -->
+        {% if user.advertencia %}
+            <div class="alert alert-warning">
+                <strong>Advertencia:</strong> {{ user.advertencia }}
+            </div>
+        {% else %}
+            <p>No tienes advertencias.</p>
+        {% endif %}
+        {% else %}
+            <p>Por favor, inicie sesión.</p>
+        {% endif %}
     </div>
+    
     <div class="cuerpo-medio">
         <article class="noticias-container">
             {% for noti in noticias %}

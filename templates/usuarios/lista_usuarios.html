@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Lista de Usuarios</h2>
+    <table>
+        <tr>
+            <th>Usuario</th>
+            <th>Acciones</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.username }}</td>
+            <td>
+                <a href="{% url 'usuario:advertir_o_bloquear' usuario.id %}">Advertir/Bloquear</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
