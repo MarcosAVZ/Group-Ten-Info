@@ -22,4 +22,6 @@ urlpatterns = [
     
 	path('comentario/eliminar/<int:pk>/', views.Eliminar_Comentario, name='eliminar_comentario'),
 
+	path('denunciar/', views.Denunciar_Noticia, name='denunciar_noticia'),
 ]
+
