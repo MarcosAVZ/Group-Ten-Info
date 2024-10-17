@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -10,5 +10,5 @@ urlpatterns = [
 
     path('perfil/', views.perfil_usuario, name='perfil_usuario'),
 
-
+    path('cambiar-foto-perfil/', views.cambiar_foto_perfil, name='cambiar_foto_perfil'),
 ]

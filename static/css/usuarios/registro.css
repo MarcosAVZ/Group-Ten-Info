@@ -1,4 +1,201 @@
-.bloque{
-	padding-bottom:  10vh;
-    padding-top: 8vh;
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #f5f5f5;
+    --text-color: #ffffff;
+    --bg-dark-color: #000b31ab;
+    --font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+/* Contenedor principal */
+.registration-wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; /* Importante para usar z-index en los elementos hijos */
+    box-shadow: 4px 4px 20px 2px #333232;
+    border: #000 1px solid;
+}
+
+/* Pseudo-clase para el fondo borroso */
+.registration-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../img/fondo-registro-container.png'); /* Cambia esta ruta por tu imagen */
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px); /* Efecto de desenfoque */
+    z-index: 0; /* La capa más baja */
+}
+
+/* El formulario y el mensaje deben estar por encima de la capa borrosa */
+.form-container,
+.message-container {
+    position: relative; /* Asegura que estén sobre la capa borrosa */
+    z-index: 1; /* El contenido visible estará por encima del fondo borroso */
+}
+
+.form-container {
+    background: linear-gradient(135deg, #1e3c72, #0f316d8f);
+    border-radius: 10px 0 0 10px;
+    padding: 40px;
+    width: 50%;
+    max-width: 500px;
+    text-align: left;
+    box-shadow: 4px 4px 20px 2px #333232;
+    border: #000 1px solid;
+}
+
+
+.form-container h3 {
+    font-size: 24px;
+    color:#ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000000;
+}
+
+.form-container input[type="submit"] {
+    background-color:#0494c0;
+    color: rgb(199, 199, 199);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #34495E ;
+    ;
+}
+
+/* Estilo para los labels */
+.form-container label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+    color: var(--text-color);
+}
+
+/* Sección derecha de la ilustración y el texto de bienvenida */
+.message-container {
+    width: 50%;
+    padding: 10px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    background: linear-gradient(135deg, #1e3c72, #0f316d8f);
+    border-radius: 0px 10px 10px 700px;
+    box-shadow: 4px 4px 20px 2px #333232;
+    border: #000 1px solid;
+    flex-direction: column;
+    margin-top: -22%;
+}
+
+.message-container h3 {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.message-container p {
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .registration-wrapper {
+        flex-direction: column;
+    }
+
+    .message-container {
+        border-radius: 0 0 10px 10px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1200px){
+    .registration-wrapper {
+        display: flex;
+        justify-content: space-between;
+        /* height: 100vh; */
+        max-width: 100%;
+        margin: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 4px 4px 20px 2px #333232;
+        border: #000 1px solid;
+        flex-direction: column;
+    }
+
+    .form-container {
+        border-radius: 10px 0 0 10px;
+        padding: 49px;
+        width: auto;
+        max-width: none; 
+        text-align: left;
+        box-shadow: 4px 4px 20px 2px #333232;
+        border: #000 1px solid;
+    }
+
+
+    .message-container {
+        /* width: 50%; */
+        padding: 10px 40px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        max-width: none; 
+        border-radius: 0px 10px 10px 0px; 
+        box-shadow: 4px 4px 20px 2px #333232;
+        border: #000 1px solid;
+        flex-direction: column;
+        margin-top: 15%;
+    }
+
+    .message-container img {
+        position: relative;
+        width: 150px;
+    }
 }

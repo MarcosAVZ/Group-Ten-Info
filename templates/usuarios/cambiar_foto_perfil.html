@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cambiar Foto de Perfil{% endblock title %}</title>
+    {% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/usuarios/cambiar_foto_perfil.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block contenido %}
+      <div class="cambiar-foto-container">
+        <h2>Cambiar Foto de Perfil</h2>
+        <div class="foto-actual">
+            <p>Foto de perfil actual:</p>
+            <img src="{{ user.foto_perfil.url }}" alt="Foto actual de perfil">
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="id_foto_perfil" class="btn btn-primary btn-lg">Seleccionar Imagen</label>
+            <input type="file" name="foto_perfil" class="form-control-file" accept="image/*" id="id_foto_perfil">
+            <span id="file-selected-message"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Actualizar Foto</button>
+        </form>      
+        <a href="{% url 'usuarios:perfil_usuario' %}" class="btn btn-secondary">Cancelar</a>
+      </div>
+    {% endblock %}
+</body>
+</html>
+

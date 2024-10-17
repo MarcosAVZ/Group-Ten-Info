@@ -3,46 +3,50 @@ html {
     position: relative;
 }
 body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Hace que el contenido crezca y el footer quede al final */
 }
 
 .contenedor {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     flex: 1;
-    min-height: 100%;
     background-color: #FFFFFF;
     color: #34495E;
 }
 
-.centrar{
-	text-align: center;
+.centrar {
+    text-align: center;
 }
 
-.bloque{
-	text-align: center;
-	padding: 100px;
+.bloque {
+    text-align: center;
+    padding: 100px;
 }
 
-.submenu{
-	font-size: 18px	;
+.submenu {
+    font-size: 18px;
 }
 
-.navbar{
-	display: flex; /*para alinear elementos */
-    justify-content: space-between; /* espacio entre elementos */
-    align-items: center; 
-	background:  #2c3e50;
-	color: #FFFFFF;
-	padding: 10px 20px; 
+.navbar {
+    display: flex; /* Para alinear elementos */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center;
+    background: #2c3e50;
+    color: #FFFFFF;
+    padding: 10px 20px;
 }
 .navbar a {
-    color: white; 
-    text-decoration: none; 
-    margin: 0 15px; /* espacio entre  enlaces */
+    color: white;
+    text-decoration: none;
+    margin: 0 15px; /* Espacio entre los enlaces */
     font-weight: bold;
 }
 .navbar a:hover {
-	background-color: #aabfd6; /* color de fondo al pasar el ratón */
-    color: white; /* color del texto al pasar el ratón */
+    background-color: #aabfd6; /* Color de fondo al pasar el ratón */
+    color: white; /* Color del texto al pasar el ratón */
     border-radius: 5px;
 }
 
@@ -50,7 +54,7 @@ body {
     padding: 20px;
     margin: 20px;
     background-color: #f5f5f5;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* sombra */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
 /* Estilo del título */
@@ -105,43 +109,39 @@ body {
 
 /* Estilo general del contenedor de noticias */
 .noticias-container {
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 16px; /* espacio entre  noticias */
-    padding: 20px; 
-	width: 80%; 
-    margin: 0 auto; /* centra el contenedor*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px; /* Espacio entre las noticias */
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto; /* Centra el contenedor */
 }
 
-/*noticia individual*/
+/* Noticia individual */
 .noticia-previa {
     border: 1px solid #ddd; /* Bordes alrededor de cada noticia */
-    border-radius: 8px; 
-    overflow: hidden; /* Ocultar  desbordamiento */
-    background-color: #fff; 
+    border-radius: 8px;
+    overflow: hidden; /* Ocultar desbordamiento */
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-    transition: transform 0.2s; /*  transición  al pasar el mouse */
-	text-align: center;
+    transition: transform 0.2s; /* Transición al pasar el mouse */
+    text-align: center;
 }
 
 /* Cambiar el tamaño de la noticia al pasar el mouse */
 .noticia-previa:hover {
-    transform: scale(1.02); 
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo para la imagen de la noticia */
 .imagen-noticia {
-    width: 100%; 
+    width: 100%;
     max-height: 150px;
     object-fit: cover; /* Cubrir el contenedor sin distorsionar */
 }
 /* Responsividad */
-@media (max-width: 768px) {
-    .noticias-container {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
-    }
-}
+
 
 @media (max-width: 480px) {
     .noticias-container {
@@ -149,268 +149,107 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    .noticias-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+    }
+}
 
 /* Estilo para los títulos */
 h3 {
-    font-size: 16px; 
-    margin: 10px 0; /*margen vertical alrededor del título */
+    font-size: 16px;
+    margin: 10px 0; /* Margen vertical alrededor del título */
 }
 
 /* Estilo para la descripción */
 .descripcion {
-    font-size: 14px; 
-    color: #555; 
+    font-size: 14px;
+    color: #555;
     margin-bottom: 10px;
 }
 
 /* Estilo para la fecha y categoría */
 p {
     font-size: 12px;
-    color: #777; 
+    color: #777;
 }
 
-/* Estilos para las categorias */
+/* Estilos para las categorías */
 .submenu {
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
     padding: 10px 20px;
-    border-radius: 8px; 
-    display: flex; /* alinear los elementos en línea */
-	justify-content: space-between;
+    border-radius: 8px;
+    display: flex; /* Alinear los elementos en línea */
+    justify-content: space-between;
     flex-wrap: nowrap; /* Permite que los elementos se envuelvan en la siguiente línea si no hay espacio */
-    gap: 15px; /* entre los elementos */
-    margin-bottom: 20px; /* espacio debajo de la barra */
-	overflow-x: auto;
+    gap: 15px; /* Espacio entre los elementos */
+    margin-bottom: 20px; /* Espacio debajo de la barra */
+    overflow-x: auto;
 }
 
 .submenu a {
-    text-decoration: none; 
-    color: #333; 
+    text-decoration: none;
+    color: #333;
     font-weight: bold; /* Texto en negrita */
     padding: 8px 12px; /* Espaciado interno en los enlaces */
     transition: background-color 0.3s ease; /* Transición suave para el fondo */
     border-radius: 4px; /* Bordes redondeados */
-	
 }
 
 .submenu a:hover {
-    background-color: #007bff; /* fondo al pasar el ratón */
-    color: white; 
+    background-color: #007bff; /* Fondo al pasar el ratón */
+    color: white;
 }
 
-
-/* Estilo formulario */
-
+/* Estilo del formulario */
 .container {
-    max-width: 600px; /*ancho maximo form */
-    margin: auto; /* centra el formulario horizontalmente */
+    max-width: 600px; /* Ancho máximo form */
+    margin: auto; /* Centra el formulario horizontalmente */
 }
 
-/* Estilo para los encabezados */
-h3 {
-    text-align: center; 
-    color: #333; 
+.container h3 {
+    text-align: center;
+    color: #333;
 }
 
-/* Estilo para los párrafos dentro del formulario */
 form p {
-    margin-top: 15px; 
+    margin-top: 15px;
 }
 
-/* Estilo para los campos del formulario */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 100%; 
-    padding: 10px; 
-    border: 1px solid #ccc; /* Borde */
-    border-radius: 4px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    margin-top: 5px; 
-
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
 }
-/* Estilo para el botón de envío */
+
 .btn-primary {
-    background-color: #007bff; 
-    color: white; 
-    padding: 10px; 
-    font-size: 16px; 
-    border-radius: 4px; 
-    transition: background-color 0.3s; /
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
-/* Cambio de color al pasar el ratón por encima del botón */
 .btn-primary:hover {
-    background-color: #0056b3;  
+    background-color: #0056b3;
 }
 
-
-.errorlist {
-    color: red; 
-    margin-top: 5px; 
-}
-
-
-/* Estilo para el contenedor de la noticia */
-.noticia-detalle {
-	font-family: Arial, sans-serif; 
-	line-height: 1.6; 
-    max-width: 800px; /* Ancho máximo de la sección de la noticia */
-    margin: auto; /* Centrar la sección */
-    padding: 20px; /* Espaciado interno */
-    background-color: #f9f9f9; /* Color de fondo claro */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-}
-.noticia-detalle h2 {
-    font-size: 1.8em; /* Tamaño del título principal */
-    margin-bottom: 15px; /* Espacio debajo del título */
-    color: #333; /* Color del texto */
-}
-
-.noticia-detalle h3 {
-    font-size: 1.4em; /* Tamaño de los subtítulos */
-    margin-top: 20px; /* Espacio arriba del subtítulo */
-    margin-bottom: 10px; /* Espacio debajo del subtítulo */
-    color: #007bff; /* Color del texto para los subtítulos */
-}
-
- .noticia-detalle  img.imagen-detalle{
-    max-width: 100%; /* Imagen se adapta al ancho del contenedor */
-    height: auto;
-	border-radius: 8px;
-}
-.titulo-noticia {
-    font-size: 2rem; /* Tamaño grande para el título */
-    color: #333; /* Color oscuro para el título */
-    margin: 10px 0; /* Espaciado vertical */
-}
-
-.fecha, .categoria {
-    font-size: 1rem; /* Tamaño de fuente más pequeño para fecha y categoría */
-    color: #666; /* Color gris para diferenciar */
-}
-
-.cuerpo-noticia {
-    font-size: 1.1rem; /* Tamaño de fuente para el cuerpo del texto */
-    line-height: 1.6; /* Mayor espacio entre líneas para mejorar la lectura */
-    color: #444; /* Color del texto */
-}
-
-.separador {
-    border: 1px solid #ccc; /* Separador sutil */
-    margin: 20px 0; /* Espaciado vertical */
-}
-
-
-.comentario-form {
-    margin-top: 20px; /* Espacio superior para el formulario de comentarios */
-}
-
-textarea {
-    width: 100%; /* Ancho completo para el área de texto */
-    height: 100px; /* Altura del área de texto */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-    border: 1px solid #ccc; /* Bordes sutiles */
-}
-
-.btn-enviar {
-    background-color: #28a745; /* Color verde para el botón de enviar */
-    color: white; /* Color del texto en el botón */
-    padding: 10px 20px; /* Espaciado interno del botón */
-    border: none; /* Sin bordes */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-}
-
-.ver-comentarios-btn, .btn-volver {
-    background-color: #007BFF; /* Color azul para el botón de ver comentarios */
-    color: white; /* Color del texto en el botón */
-    padding: 10px 20px; /* Espaciado interno del botón */
-    border: none; /* Sin bordes */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    margin-bottom: 20px; 
-	text-decoration: none;
-}
-
-.comentarios-lista {
-    margin-top: 20px; /* Espacio superior para la lista de comentarios */
-}
-
-/* Mostrar los comentarios al hacer clic en el botón */
-.ver-comentarios-btn:hover {
-    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
-}
-
-
-
-.btn-volver:hover {
-    background-color:  #0056b3; /* Color más oscuro al pasar el mouse */
-}
-
-
-
-.crear-noticia {
-    background-color: #f9f9f9; /* Color de fondo claro */
-    border: 1px solid #ddd; /* Borde gris claro */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno */
-    margin: 20px 0; /* Margen superior e inferior */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-}
-
-.crear-noticia h2 {
-    margin-bottom: 15px; /* Espacio inferior del encabezado */
-    color: #333; /* Color del texto */
-}
-
-.crear-noticia label {
-    display: block; /* Para que los labels ocupen toda la línea */
-    margin-bottom: 5px; /* Espacio inferior de los labels */
-    font-weight: bold; /* Negrita para los labels */
-}
-
-.crear-noticia input[type="text"],
-.crear-noticia textarea,
-.crear-noticia select {
-    width: 100%; /* Ancho completo */
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #ccc; /* Borde gris */
-    border-radius: 4px; /* Bordes redondeados */
-    margin-bottom: 15px; /* Margen inferior */
-    font-size: 16px; /* Tamaño de fuente */
-}
-
-.crear-noticia input[type="file"] {
-    margin-bottom: 15px; /* Margen inferior */
-}
-
-.crear-noticia button {
-    background-color: #007bff; /* Color de fondo azul */
-    color: white; /* Color de texto */
-    padding: 10px 15px; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar */
-    font-size: 16px; /* Tamaño de fuente */
-    transition: background-color 0.3s; /* Transición suave para el hover */
-}
-
-.crear-noticia button:hover {
-    background-color: #0056b3; /* Color más oscuro al pasar el ratón */
-}
-
-
+/* Estilo del footer */
 footer {
-    background-color: #000; /* Fondo negro */
-    color: #fff; /* Texto en blanco */
+    background-color: #000;
+    color: #fff;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: absolute;
+    position: relative; /* Cambiado de absolute a relative */
 }
 
 .footer-container {
@@ -449,16 +288,10 @@ footer {
     gap: 10px;
 }
 
-.footer-derecha .iconos a img,
 .footer-derecha .iconos img {
-    width: 30px; 
+    width: 30px;
     height: 30px;
     padding: 5px;
-}
-
-.footer-derecha .iconos .facebook {
-    width: 50px; 
-    height: 30px;
 }
 
 .footer-derecha p {
@@ -481,4 +314,3 @@ footer {
         justify-content: center;
     }
 }
-
