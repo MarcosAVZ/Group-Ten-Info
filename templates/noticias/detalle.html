@@ -31,7 +31,7 @@
 
     <!-- Botón de denunciar -->
     {% if user.is_authenticated %}
-    <form method="GET" action="{% url 'denunciar_noticia' %}">
+    <form method="GET" action="{% url 'noticias:denunciar_noticia' %}">
         <input type="hidden" name="id_noticia" value="{{ noticia.pk }}">
         <button type="submit" class="btn-enviar" style="background-color: #ff5c5c;">Denunciar Noticia</button>
     </form>
