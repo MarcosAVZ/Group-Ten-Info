@@ -22,3 +22,12 @@ class RegistroForm(UserCreationForm):
             'password1',
             'password2'
         ]
+
+
+class CambiarFotoPerfilForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['foto_perfil']
+        widgets = {
+            'foto_perfil': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+        }
