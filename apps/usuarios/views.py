@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
+=======
+from django.shortcuts import render, redirect
+>>>>>>> marcos
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from apps.noticias.models import Noticia
@@ -10,6 +14,8 @@ from .forms import RegistroForm
 from django.contrib import messages
 from .models import Usuario
 from django.contrib.auth import authenticate, login
+
+from .forms import CambiarFotoPerfilForm
 
 # Create your views here.
 
@@ -107,3 +113,14 @@ def login_view(request):
             return render(request, 'usuarios/login.html')  # Cambiar de redirect a render  
     
     return render(request, 'usuarios/login.html')
+def cambiar_foto_perfil(request):
+    if request.method == 'POST':
+        form = CambiarFotoPerfilForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('usuarios:perfil_usuario')  # Redirige a la página de perfil después de actualizar la foto
+    else:
+        form = CambiarFotoPerfilForm(instance=request.user)
+
+    return render(request, 'usuarios/cambiar_foto_perfil.html', {'form': form})
+

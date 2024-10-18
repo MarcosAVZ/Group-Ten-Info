@@ -11,24 +11,26 @@
     <title>{% block titulo %}LOGIN{% endblock titulo %}</title>
 </head>
 <body>
-    {% block contenido %}
-        <div class="login-container">
-            <!-- Mostrar mensajes de advertencia o errores -->
-            {% if messages %}
-                <ul class="messages">
-					{% for message in messages %}
-						<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-					{% endfor %}
-                </ul>
-            {% endif %}
-
-            <!-- Formulario de login -->
-            <form method="POST">
-                {% csrf_token %}
-                <input type="text" name="username" placeholder="USUARIO" required>
-                <input type="password" name="password" placeholder="PASSWORD" required>
-                <input type="submit" value="ENVIAR">
-            </form>
-        </div>
-    {% endblock %}
+	{% block contenido %}
+		<div class="login-container">
+			<!-- Formulario de inicio de sesión -->
+			<div class="login-form">
+				<h2>Login</h2>
+				<form method="POST">{% csrf_token %}
+					<input type="text" name="username" placeholder="Usuario" required>
+					<input type="password" name="password" placeholder="Contraseña" required>
+					<input type="submit" value="Ingresar">
+					<p>¿Todavía no te has registrado? <a href="{% url 'usuarios:registro' %}">Registrarme</a></p>
+					{{ form.errors }}
+				</form>
+			</div>
+			<!-- Ilustración o contenido complementario -->
+			<div class="login-illustration">
+				<img src="{% static 'img/logo.png' %}" alt="Ilustración">
+				<h3>Bienvenido</h3>
+				<p>Te esperamos para que comentes y compartas tus noticias sobre <strong>Inteligencia Artificial</strong>.</p>
+			</div>
+		</div>
+	{% endblock %}
 </body>
+</html>
