@@ -1,0 +1,83 @@
+.editar-noticia {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.editar-noticia h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.editar-noticia label {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.editar-noticia input[type="text"],
+.editar-noticia textarea,
+.editar-noticia input[type="file"],
+.editar-noticia select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.editar-noticia textarea {
+    height: 120px;
+    resize: none;
+}
+
+.editar-noticia button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.editar-noticia button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.editar-noticia input[type="file"] {
+    padding: 5px;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+}
+
+select option {
+    color: #333;
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .editar-noticia {
+        padding: 15px;
+    }
+
+    .editar-noticia h2 {
+        font-size: 24px;
+    }
+}

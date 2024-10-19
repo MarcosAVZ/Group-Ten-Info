@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block titulo %}NOTICIAS{% endblock titulo %}
-
-
-{% block contenido %}			
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/noticias/listar.css' %}">
+    {% endblock %}
+	<title>{% block titulo %}NOTICIAS{% endblock titulo %}</title>
+</head>
+<body>
+	{% block contenido %}			
 	<div class="submenu">
 
 		<a href="{% url 'noticias:listar' %}">TODAS</a>
@@ -16,33 +23,7 @@
 		{% endfor %}
 
 	</div>
-	<!-- Filtro adicional por autor -->
-	<form method="GET" action="{% url 'noticias:listar' %}">
-		<div>
-			<label for="autor">Filtrar por autor:</label>
-			<select name="autor" id="autor">
-				<option value="">Todos los autores</option>
-				{% for autor in autores %}
-					<option value="{{ autor.pk }}">{{ autor.username }}</option>
-				{% endfor %}
-			</select>
-			<button type="submit">Filtrar</button>
-		</div>
-	</form>
-	<!-- Filtros adicionales: antigüedad y título -->
-	<form method="GET" action="{% url 'noticias:listar' %}">
-		<div>
-			<label for="ordenar">Ordenar por:</label>
-			<select name="ordenar" id="ordenar">
-				<option value="">Seleccionar</option>
-				<option value="antiguedad_asc">Antigüedad Ascendente</option>
-				<option value="antiguedad_desc">Antigüedad Descendente</option>
-				<option value="titulo_asc">Título  (A-Z)</option>
-				<option value="titulo_desc">Título (Z-A)</option>
-			</select>
-			<button type="submit">Aplicar Filtros</button>
-		</div>
-	</form>
+
 
 	<!-- Formulario para crear una noticia -->
 	{% if user.is_authenticated %}
@@ -77,6 +58,34 @@
 		<p>Debes estar registrado para crear una noticia.</p>
 	{% endif %}
 
+		<!-- Filtro adicional por autor -->
+	<form method="GET" action="{% url 'noticias:listar' %}">
+		<div>
+			<label for="autor">Filtrar por autor:</label>
+			<select name="autor" id="autor">
+				<option value="">Todos los autores</option>
+				{% for autor in autores %}
+					<option value="{{ autor.pk }}">{{ autor.username }}</option>
+				{% endfor %}
+			</select>
+			<button type="submit">Filtrar</button>
+		</div>
+	</form>
+	<!-- Filtros adicionales: antigüedad y título -->
+	<form method="GET" action="{% url 'noticias:listar' %}">
+		<div>
+			<label for="ordenar">Ordenar por:</label>
+			<select name="ordenar" id="ordenar">
+				<option value="">Seleccionar</option>
+				<option value="antiguedad_asc">Antigüedad Ascendente</option>
+				<option value="antiguedad_desc">Antigüedad Descendente</option>
+				<option value="titulo_asc">Título  (A-Z)</option>
+				<option value="titulo_desc">Título (Z-A)</option>
+			</select>
+			<button type="submit">Aplicar Filtros</button>
+		</div>
+	</form>
+
 
 	<div class="noticias-container">
 		{% for noti in noticias %}
@@ -86,12 +95,14 @@
 				<p>Fecha: {{ noti.fecha|date:"d M Y" }}</p>
 				<p>Categoría: {{ noti.categoria_noticia }}</p>
 				<p class="descripcion">{{ noti.cuerpo|truncatewords:20 }}</p> <!-- Muestra las primeras 20 palabras -->
-
-				<p>PK: {{ noti.pk }}</p>
 			</div>
 		{% endfor %}
 	</div>
-	
-	
-{% endblock contenido %}
+	{% endblock contenido %}
+</body>
+</html>
+
+
+
+
 
