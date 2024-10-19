@@ -1,6 +1,7 @@
 from django.db import models
 from apps.usuarios.models import Usuario
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
 
 class Categoria(models.Model):
 	nombre = models.CharField(max_length = 60)
@@ -36,3 +37,5 @@ class Denuncia(models.Model):
 	def __str__(self):
 		return f"{self.motivo}"
 	
+class Usuario(AbstractUser):
+    bloqueado = models.BooleanField(default=False)
