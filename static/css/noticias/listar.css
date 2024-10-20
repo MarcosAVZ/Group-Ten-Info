@@ -1,0 +1,181 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Estilo del menú de categorías */
+.submenu {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu a {
+    text-decoration: none;
+    color: #0056b3;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.submenu a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Estilo de los filtros */
+form {
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-right: 15px;
+}
+
+form select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor principal para la creación de noticias */
+.crear-noticia {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+/* Título principal */
+.crear-noticia h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los campos */
+.crear-noticia label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+/* Input y textareas */
+.crear-noticia input[type="text"],
+.crear-noticia textarea,
+.crear-noticia select {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.crear-noticia input[type="file"] {
+    display: block;
+    margin: 10px auto 20px auto;
+    background-color: #f8f8f8;
+}
+
+/* Estilos para los botones */
+.crear-noticia button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.crear-noticia button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo de las noticias */
+.noticias-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.noticia-previa {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.noticia-previa:hover {
+    transform: translateY(-5px);
+}
+
+.noticia-previa img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.noticia-previa h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+.noticia-previa h3 a {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+.noticia-previa h3 a:hover {
+    color: #002f6c;
+}
+
+.noticia-previa p {
+    font-size: 14px;
+    color: #666;
+}
+
+.noticia-previa .descripcion {
+    font-style: italic;
+    color: #444;
+}

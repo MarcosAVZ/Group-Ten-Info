@@ -44,25 +44,27 @@
 
 
 .noticia-previa {
+    max-height: 600px;
     background-color: #f9f9f9;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-height: 400px; /* Limita la altura máxima */
+    overflow: hidden; /* Esconde el contenido adicional si la altura es mayor */
 }
+
 
 
 .cuerpo-medio {
-    display: flex; /* Activamos Flexbox para el contenedor */
-    justify-content: space-between; /* Espaciado entre article y aside */
-    gap: 20px; /* Espacio entre article y aside */
+    display: flex; 
+    justify-content: space-between;
+    align-items: flex-start; /* Asegúrate de que los elementos comiencen desde la parte superior */
+    gap: 20px;
 }
 
-.noticias-container {
-    flex: 1 1 80%; /* Article ocupa el 80% del ancho */
-    background-color: #f9f9f9; /* Opcional: para ver los bordes */
-    padding: 15px; /* Opcional: margen interno */
-}
+
+
 
 /* Estilos del aside */
 aside {

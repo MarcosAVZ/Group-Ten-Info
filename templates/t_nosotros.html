@@ -3,28 +3,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	{% block extra_css %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/nosotros.css' %}">
     {% endblock %}
-	<title>{% block titulo %}NOSOTROS{% endblock titulo %}</title>
+    <title>{% block titulo %}NOSOTROS{% endblock titulo %}</title>
 </head>
 <body>
-{% block contenido %}
-<h2 class="titulo-nosotros">SOMOS EL GRUPO AMADEUS DEL INFORMATORIO, EDICIÓN 2024</h2>
+    {% block contenido %}
+    <!-- Contenedor del fondo repetido -->
+    <div class="contenido-con-fondo">
+        <h2 class="titulo-nosotros">SOMOS EL GRUPO AMADEUS DEL INFORMATORIO, EDICIÓN 2024</h2>
 
-<p class="descripcion">
-	Estamos trabajando en nuestro proyecto final, aplicando los conocimientos adquiridos hasta ahora para crear un blog relacionado con la inteligencia artificial.
-</p>
+        <p class="descripcion">
+            Estamos trabajando en nuestro proyecto final, aplicando los conocimientos adquiridos hasta ahora para crear un blog relacionado con la inteligencia artificial.
+        </p>
 
-<p class="descripcion">
-	Nuestro equipo está compuesto por cinco integrantes con profesiones diversas, unidos en la tarea de mejorar la experiencia de trabajo colaborativo utilizando plataformas como <strong>GitHub</strong> y <strong>Trello</strong>. Este proyecto académico no solo nos permite aplicar lo aprendido, sino que también nos brinda la oportunidad de adquirir nuevas habilidades y conocimientos valiosos.
-</p>
+        <p class="descripcion">
+            Nuestro equipo está compuesto por cinco integrantes con profesiones diversas, unidos en la tarea de mejorar la experiencia de trabajo colaborativo utilizando plataformas como <strong>GitHub</strong> y <strong>Trello</strong>. Este proyecto académico no solo nos permite aplicar lo aprendido, sino que también nos brinda la oportunidad de adquirir nuevas habilidades y conocimientos valiosos.
+        </p>
 
-<img src="{% static 'img/equipo.jpg' %}" alt="Nuestro equipo" class="imagen-equipo">
-{% endblock contenido %}
+        <!-- Bloque de nombres del equipo -->
+        <div class="equipo-container">
+            <h3 class="equipo-titulo">Nuestro Equipo:</h3>
+            <div class="equipo-miembros">
+                <div class="miembro">
+                    <span class="nombre">Avanzatti Marcos</span>
+                </div>
+                <div class="miembro">
+                    <span class="nombre">Rodriguez Alejandra</span>
+                </div>
+                <div class="miembro">
+                    <span class="nombre">Onisimchuk Antonella</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock contenido %}
 </body>
 </html>
-
-

@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block titulo %}Editar Noticia{% endblock titulo %}
-
-{% block contenido %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/noticias/editar_noticia.css' %}">
+    {% endblock %}
+    <title>{% block titulo %}Editar Noticia{% endblock titulo %}</title>
+</head>
+<body>
+    {% block contenido %}
 <div class="editar-noticia">
     <h2>Editar Noticia</h2>
     <form method="POST" enctype="multipart/form-data">
@@ -32,3 +40,6 @@
     </form>
 </div>
 {% endblock contenido %}
+</body>
+</html>
+
