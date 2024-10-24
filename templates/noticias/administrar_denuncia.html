@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}ADMINISTRAR DENUNCIA{% endblock titulo %}
+
+<h2>Denuncias</h2>
+<table>
+    <tr>
+        <th>Título</th>
+        <th>URL</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+    </tr>
+    {% for denuncia in denuncias %}
+    <tr>
+        <td>{{ denuncia.titulo }}</td>
+        <td><a href="{{ denuncia.url_noticia }}">{{ denuncia.url_noticia }}</a></td>
+        <td>{{ denuncia.descripcion }}</td>
+        <td>
+            <form method="POST" action="{% url 'bloquear_cuenta' denuncia.id %}">
+                {% csrf_token %}
+                <button type="submit">Bloquear Cuenta</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

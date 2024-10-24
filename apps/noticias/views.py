@@ -1,7 +1,7 @@
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render, redirect
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import ComentarioForm, NoticiaForm, DenunciaForm
 from django.db.models import Q
 
@@ -184,6 +184,16 @@ def Denunciar_Noticia(request):
 
 	return redirect(reverse_lazy('noticias:detalle', kwargs={'pk': noti}))
 
+@user_passes_test(lambda u: u.is_staff)
+def administrar_denuncias(request):
+    denuncias = Denuncia.objects.filter(bloqueada=False)
+    return render(request, 'administrar_denuncias.html', {'denuncias': denuncias})
+
+def bloquear_cuenta(request, denuncia_id):
+    denuncia = Denuncia.objects.get(id=denuncia_id)
+    denuncia.bloqueada = True
+    denuncia.save()
+    return redirect('administrar_denuncias')
 
 #{'nombre':'name', 'apellido':'last name', 'edad':23}
 #EN EL TEMPLATE SE RECIBE UNA VARIABLE SEPARADA POR CADA CLAVE VALOR
