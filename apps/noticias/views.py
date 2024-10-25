@@ -9,7 +9,7 @@ from .models import Noticia, Categoria, Comentario, Denuncia
 
 from django.urls import reverse_lazy
 from apps.usuarios.models import Usuario
-
+from django.contrib import messages
 
 def Listar_Noticias(request):
     contexto = {}
@@ -151,38 +151,29 @@ def Editar_comentario(request, pk):
         return redirect(f'/Noticias/Detalle/{noticia_id}') 
 
 @login_required
-def denunciar_noticia(request):
+def Denunciar_Noticia(request, noticia_id):
+    noticia = Noticia.objects.get(pk=noticia_id) 
+    print("Método de la solicitud:", request.method)  # Esto te dirá si es GET o POST
     if request.method == 'POST':
+
         form = DenunciaForm(request.POST)
         if form.is_valid():
-            # Procesar los datos de la denuncia
-            titulo = form.cleaned_data['titulo']
-            url_noticia = form.cleaned_data['url_noticia']
-            descripcion = form.cleaned_data['descripcion']
-            tipo_denuncia = form.cleaned_data['tipo_denuncia']
-            # Aquí podrías guardar los datos en la base de datos o enviar un correo
-            # por ejemplo: Denuncia.objects.create(...)
-            
-            # Redirigir al usuario a una página de éxito
-            return redirect('denuncia_exitosa')
+            print("Formulario válido, redirigiendo a denuncia_exitosa...")
+            motivo = form.cleaned_data['motivo']
+            # Guardar la denuncia en la base de datos
+            Denuncia.objects.create(usuario=request.user, noticia=noticia, motivo=motivo)
+
+            # Mensaje de éxito
+            messages.success(request, 'Denuncia realizada con éxito.')
+            return redirect('noticias:denuncia_exitosa')  # Redirigir a una página de éxito
     else:
         form = DenunciaForm()
-    
-    return render(request, 'denunciar_noticia.html', {'form': form})
+
+    return render(request, 'noticias/denunciar_noticia.html', {'form': form, 'noticia': noticia})
 
 def denuncia_exitosa(request):
-    return render(request, 'denuncia_exitosa.html')
-
     
-@login_required
-def Denunciar_Noticia(request):
-	com = request.POST.get('motivo', None)
-	usu = request.user
-	noti = request.POST.get('id_noticia', None)# OBTENGO LA PK
-	noticia = Noticia.objects.get(pk = noti) #BUSCO LA NOTICIA CON ESA PK
-	den = Denuncia.objects.create(usuario = usu, noticia = noticia, motivo = com)
-
-	return redirect(reverse_lazy('noticias:detalle', kwargs={'pk': noti}))
+    return render(request, 'noticias/denuncia_exitosa.html')
 
 
 #{'nombre':'name', 'apellido':'last name', 'edad':23}

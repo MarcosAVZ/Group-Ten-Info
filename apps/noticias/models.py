@@ -29,10 +29,10 @@ class Comentario(models.Model):
 		return f"{self.noticia}->{self.texto}"
 
 class Denuncia(models.Model):
-	usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-	noticia = models.ForeignKey(Noticia, on_delete = models.CASCADE)
-	motivo = models.TextField()
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    noticia = models.ForeignKey(Noticia, on_delete=models.CASCADE)
+    motivo = models.TextField(max_length=1500)  # Motivo de la denuncia, ajuste según necesidad
+    
 
-	def __str__(self):
-		return f"{self.motivo}"
-	
+    def __str__(self):
+        return f'Denuncia de {self.usuario.username} sobre "{self.noticia.titulo}"'

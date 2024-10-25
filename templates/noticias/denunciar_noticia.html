@@ -1,36 +1,21 @@
 {% extends 'base.html' %}
-{% load static %}
 
-{% block titulo %}DENUNCIA{% endblock titulo %}
+{% block content %}
+<h2>Denunciar Noticia: {{ noticia.titulo }}</h2>
 
-<div class="container">
-    <h2>Formulario de Denuncia de Noticia</h2>
-    <form method="POST" action="{% url 'denunciar_noticia' %}">
-        {% csrf_token %}
-        
-        <!-- Campo para el título de la noticia -->
-        <label for="titulo">Título de la Noticia</label>
-        <input type="text" id="titulo" name="titulo" placeholder="Ingresa el título de la noticia" required>
+<!-- Bloque para mostrar mensajes -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
-        <!-- Campo para la URL de la noticia -->
-        <label for="url_noticia">URL de la Noticia</label>
-        <input type="url" id="url_noticia" name="url_noticia" placeholder="https://ejemplo.com/noticia" required>
-
-        <!-- Campo de texto para describir la denuncia -->
-        <label for="descripcion">Descripción de la Denuncia</label>
-        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe el motivo de la denuncia" required></textarea>
-
-        <!-- Selección del tipo de denuncia -->
-        <label for="tipo_denuncia">Tipo de Denuncia</label>
-        <select id="tipo_denuncia" name="tipo_denuncia" required>
-            <option value="">Selecciona una opción</option>
-            <option value="falsa">Noticia Falsa</option>
-            <option value="engañosa">Contenido Engañoso</option>
-            <option value="plagio">Plagio</option>
-            <option value="otro">Otro</option>
-        </select>
-
-        <!-- Botón para enviar el formulario -->
-        <button type="submit">Enviar Denuncia</button>
-    </form>
-</div>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-enviar" style="background-color: #ff5c5c;">Denunciar Noticia</button>
+</form>
+<a href="{% url 'detalle' noticia.id %}">Volver a la noticia</a>
+{% endblock %}

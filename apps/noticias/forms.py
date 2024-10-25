@@ -15,4 +15,4 @@ class NoticiaForm(forms.ModelForm):
 class DenunciaForm(forms.ModelForm):
     class Meta:
         model = Denuncia
-        fields = '__all__'
+        fields =['motivo']

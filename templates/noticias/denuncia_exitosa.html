@@ -1,4 +1,18 @@
 <div class="container">
     <h2>¡Gracias por tu denuncia!</h2>
     <p>Tu denuncia ha sido enviada y será revisada pronto.</p>
+
+    <!-- Bloque para mostrar mensajes -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+     <!-- Botón para volver a la sección de noticias -->
+     <a href="{% url 'noticias:listar' %}" class="btn btn-primary" style="margin-top: 20px;">Volver a Noticias</a>
+    </div>
+
 </div>
