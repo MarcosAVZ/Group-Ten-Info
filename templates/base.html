@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MI WEB| {% block titulo %}{% endblock titulo %}</title>
+	<title>Amadeus| {% block titulo %}{% endblock titulo %}</title>
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	<!-- Bloque para Agregar el css de los otros html dentro-->
@@ -18,7 +18,7 @@
 		<a href="{% url 'noticias:listar' %}">NOTICIAS</a>
 
 		{% if user.is_authenticated %}
-			<a href="{% url 'usuarios:perfil_usuario' %}">HOLA {{ user.username }}</a>
+			<a href="{% url 'usuarios:perfil_usuario' %}">{{ user.username }}</a>
 			<a href="{% url 'logout' %}">LOGOUT</a>
 		{% else %}
 			<a href="{% url 'login' %}">LOGIN</a>

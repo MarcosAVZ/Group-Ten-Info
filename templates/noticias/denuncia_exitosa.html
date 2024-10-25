@@ -1,18 +1,33 @@
-<div class="container">
-    <h2>¡Gracias por tu denuncia!</h2>
-    <p>Tu denuncia ha sido enviada y será revisada pronto.</p>
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/noticias/denuncia_exitosa.css' %}">
+    {% endblock %}
+    <title>{% block titulo %}Denuncia{% endblock titulo %}</title>
+</head>
+<body>
+    {% block contenido %}
+        <div class="container">
+            <h2>¡Gracias por tu denuncia!</h2>
+            <p>Tu denuncia ha sido enviada y será revisada pronto.</p>
+            <!-- Bloque para mostrar mensajes -->
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <!-- Botón para volver a la sección de noticias -->
+            <a href="{% url 'noticias:listar' %}" class="btn btn-primary" style="margin-top: 20px;">Volver a Noticias</a>
+            </div>
+        </div>
+    {% endblock contenido %}
+</body>
+</html>
 
-    <!-- Bloque para mostrar mensajes -->
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    
-     <!-- Botón para volver a la sección de noticias -->
-     <a href="{% url 'noticias:listar' %}" class="btn btn-primary" style="margin-top: 20px;">Volver a Noticias</a>
-    </div>
-
-</div>
